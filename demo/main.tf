@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_security_group" "ad_allow_ssh" {
-  name        = "allow_ssh"
+  name        = "ad_allow_ssh"
   description = "Allow SSH from Admin System"
 
   ingress {
