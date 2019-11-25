@@ -27,7 +27,7 @@ resource "aws_security_group" "ad_allow_ssh" {
 resource "aws_instance" "example" {
   ami           = "ami-0c322300a1dd5dc79"
   instance_type = "t2.micro"
-  security_groups = ["${aws_security_group.ad_allow_ssh.name}"]
+  security_groups = ["${aws_security_group.terraform-20191121222237976000000002.name}"]
   tags = {
     Name = "Terraformtest"
     "Created By" = "Andrew Darley"
