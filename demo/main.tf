@@ -27,4 +27,7 @@ resource "aws_security_group" "allow_ssh" {
     cidr_blocks     = ["0.0.0.0/0"]
     prefix_list_ids = ["pl-12c4e678"]
   }
+  tags = {
+    "Created By" = "Andrew Darley"
+  }
 }
