@@ -1,15 +1,8 @@
 provider "aws" {
   region = "us-east-1"
 }
-resource "aws_instance" "example" {
-  ami           = "ami-0c322300a1dd5dc79"
-  instance_type = "t2.micro"
-  tags = {
-    Name = "Terraformtest"
-    "Created By" = "Andrew Darley"
-  }
-}
-resource "aws_security_group" "allow_ssh" {
+
+resource "aws_security_group" "ad_allow_ssh" {
   name        = "allow_ssh"
   description = "Allow SSH from Admin System"
 
@@ -27,6 +20,16 @@ resource "aws_security_group" "allow_ssh" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
   tags = {
+    "Created By" = "Andrew Darley"
+  }
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c322300a1dd5dc79"
+  instance_type = "t2.micro"
+  security_groups = ["${aws_security_group.ad_allow_ssh}q"]
+  tags = {
+    Name = "Terraformtest"
     "Created By" = "Andrew Darley"
   }
 }
